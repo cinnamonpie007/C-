@@ -1,54 +1,52 @@
-﻿int numb = new Random().Next(100, 999);
-int secondNumb(int numb)
+﻿System.Console.WriteLine("Task 1");
+
+// task 1
+int a = new Random().Next(1, 10);
+int b = new Random().Next(1, 10);
+// int a = 2;
+// int b = 4;
+int cub(int x, int y)
 {
-    int result = (numb % 100) / 10;
-    return (result);
+    int res = 1;
+    for (int i = 0; i < b; i++)
+    {
+        res *= a;
+    }
+    return res;
 }
-Console.WriteLine(numb);
-Console.WriteLine($"цифра под индексом -2: {secondNumb(numb)}");
+System.Console.WriteLine($"{a} в {b} степени = {cub(a, b)}");
+// System.Console.WriteLine(Math.Pow(a, b));
 
-int numb2 = new Random().Next(0, 100000);
-if (numb2 >= 100)
+System.Console.WriteLine("Task 2");
+
+// task2
+
+int c = new Random().Next(1, 1000);
+int sum(int x)
 {
-    int result = 0;
-    if (numb2 >= 1000)
+    int c2 = c;
+    int res = 0;
+    for (int i = 0; i <= c2; i++)
     {
-        int numb0 = numb2;
-        while(numb0 > 1000)
-        {
-            numb0 /= 10;
-        }
-        result = numb0 % 10;
+        res += c2 % 10;
+        c2 /= 10;
     }
-    else
-    {
-        result = numb2 % 10;
-    }
-    System.Console.WriteLine(numb2);
-    Console.WriteLine($"цифра под индексом 2: {result}");
+    return res;    
 }
-else
+System.Console.WriteLine($"Сумма цифр числа {c} = {sum(c)}");
+
+System.Console.WriteLine("Task 3");
+
+// task3
+
+void lists()
 {
-    Console.WriteLine("третей цифры нет");
-}
-
-// Console.WriteLine(numb2);
-// Console.WriteLine($"цифра под индексом 2: {thirdNumb(numb2)}");
-
-/// task 3
-
-int numb3 = new Random().Next(1, 7);
-
-string day(int numb3)
-{ 
-    if (numb3 == 6 || numb3 == 7)
+    List<int> res = new List<int>();
+    for (int i = 0; i < 8; i++)
     {
-        return ("да");
-    }
-    else
-    {   
-        return("нет");
-    }
+        int v = new Random().Next(1, 10);
+        res.Add(v);
+    } 
+    Console.WriteLine($"[{string.Join(", " , res)}]");
 }
-Console.WriteLine(numb3);
-Console.WriteLine($"выходной день ? {day(numb3)}");
+lists();
