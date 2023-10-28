@@ -1,54 +1,63 @@
-﻿int numb = new Random().Next(100, 999);
-int secondNumb(int numb)
-{
-    int result = (numb % 100) / 10;
-    return (result);
-}
-Console.WriteLine(numb);
-Console.WriteLine($"цифра под индексом -2: {secondNumb(numb)}");
+﻿using System.Runtime.Intrinsics.Arm;
 
-int numb2 = new Random().Next(0, 100000);
-if (numb2 >= 100)
+public class lesson6
 {
-    int result = 0;
-    if (numb2 >= 1000)
+    public static int Countnumb(List<int> arr)
     {
-        int numb0 = numb2;
-        while(numb0 > 1000)
+        int count = 0;
+        foreach(int i in arr)
         {
-            numb0 /= 10;
+            if(i > 0)
+            {
+                count += 1;
+            }
         }
-        result = numb0 % 10;
+        return count;
     }
-    else
+
+    public static Tuple<double, double> Points(double b1, double k1, double b2, double k2)
     {
-        result = numb2 % 10;
+        double y1 = 0;
+        double y2 = 0;
+        if(k1 == k2)
+        {
+            System.Console.WriteLine("Прямые параллельны, точки пересечения нет");
+        }
+        else
+        {
+            double x = (b2 - b1) / (k1 - k2);
+            y1 += k1 * x + b1;
+            y2 += k2 * x + b2;
+        }
+
+        return Tuple.Create(y1, y2);
     }
-    System.Console.WriteLine(numb2);
-    Console.WriteLine($"цифра под индексом 2: {result}");
-}
-else
-{
-    Console.WriteLine("третей цифры нет");
-}
 
-// Console.WriteLine(numb2);
-// Console.WriteLine($"цифра под индексом 2: {thirdNumb(numb2)}");
-
-/// task 3
-
-int numb3 = new Random().Next(1, 7);
-
-string day(int numb3)
-{ 
-    if (numb3 == 6 || numb3 == 7)
+    public static void Main(string[] args)
     {
-        return ("да");
-    }
-    else
-    {   
-        return("нет");
+        System.Console.WriteLine("task 41");
+        List<int> array = new List<int>();
+        System.Console.Write("какой длинны список ?: ");
+        string? x = Console.ReadLine();
+        for (int i = 0; i < Convert.ToInt32(x); i++)
+        {
+            System.Console.Write($"введите число {i + 1} : ");
+            string? numb = Console.ReadLine(); 
+            array.Add(Convert.ToInt32(numb));
+        }
+
+        System.Console.WriteLine(Countnumb(array));
+
+        System.Console.WriteLine("task 43");
+        System.Console.Write("Введите b1 : ");
+        double b1 = Convert.ToDouble(Console.ReadLine());
+        System.Console.Write("Введите k1 : ");
+        double k1 = Convert.ToDouble(Console.ReadLine());
+        System.Console.Write("Введите b2 : ");
+        double b2 = Convert.ToDouble(Console.ReadLine());
+        System.Console.Write("Введите k2 : ");
+        double k2 = Convert.ToDouble(Console.ReadLine());
+        System.Console.WriteLine($"Точки пересечения: {Points(b1, k1, b2,k2)}");
+
     }
 }
-Console.WriteLine(numb3);
-Console.WriteLine($"выходной день ? {day(numb3)}");
