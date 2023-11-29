@@ -1,63 +1,66 @@
-﻿using System.Runtime.Intrinsics.Arm;
-
-public class lesson6
+﻿
+public class lesson9
 {
-    public static int Countnumb(List<int> arr)
-    {
-        int count = 0;
-        foreach(int i in arr)
+    public static void lesson64(int n)
+    {  
+        if (n != 0)
         {
-            if(i > 0)
+            Console.Write(n);
+            if(n > 1)
             {
-                count += 1;
+                Console.Write(", ");
             }
+            lesson64(n - 1);
         }
-        return count;
     }
-
-    public static Tuple<double, double> Points(double b1, double k1, double b2, double k2)
+    public static void lesson66(int m, int n)
     {
-        double y1 = 0;
-        double y2 = 0;
-        if(k1 == k2)
+        int x = 0;
+        if(m < n)
         {
-            System.Console.WriteLine("Прямые параллельны, точки пересечения нет");
+            for(int i = m; i <= n; i++)
+            {
+                x += i;
+            }
         }
         else
         {
-            double x = (b2 - b1) / (k1 - k2);
-            y1 += k1 * x + b1;
-            y2 += k2 * x + b2;
+            for(int i = n; i <= m; i++)
+            {
+                x += i;
+            }
         }
-
-        return Tuple.Create(y1, y2);
+        System.Console.WriteLine(x);
+    }
+    public static int lesson68(int m, int n)
+    {
+        if(m == 0) return n + 1;
+        else if(n == 0) return lesson68(m - 1, 1);
+        else return lesson68(m - 1, lesson68(m, n - 1));
     }
 
     public static void Main(string[] args)
     {
-        System.Console.WriteLine("task 41");
-        List<int> array = new List<int>();
-        System.Console.Write("какой длинны список ?: ");
+        System.Console.WriteLine("Задание 64");
+        Console.Write("Введите значение N: ");
         string? x = Console.ReadLine();
-        for (int i = 0; i < Convert.ToInt32(x); i++)
-        {
-            System.Console.Write($"введите число {i + 1} : ");
-            string? numb = Console.ReadLine(); 
-            array.Add(Convert.ToInt32(numb));
-        }
-
-        System.Console.WriteLine(Countnumb(array));
-
-        System.Console.WriteLine("task 43");
-        System.Console.Write("Введите b1 : ");
-        double b1 = Convert.ToDouble(Console.ReadLine());
-        System.Console.Write("Введите k1 : ");
-        double k1 = Convert.ToDouble(Console.ReadLine());
-        System.Console.Write("Введите b2 : ");
-        double b2 = Convert.ToDouble(Console.ReadLine());
-        System.Console.Write("Введите k2 : ");
-        double k2 = Convert.ToDouble(Console.ReadLine());
-        System.Console.WriteLine($"Точки пересечения: {Points(b1, k1, b2,k2)}");
-
+        int n = Convert.ToInt32(x);
+        lesson64(n);
+        System.Console.WriteLine("\nЗадача 66");
+        Console.Write("Введите значение M: ");
+        string? x1 = Console.ReadLine();
+        int m = Convert.ToInt32(x1);
+        Console.Write("Введите значение N: ");
+        string? x2 = Console.ReadLine();
+        int n1 = Convert.ToInt32(x2);
+        lesson66(m, n1);
+        System.Console.WriteLine("Задача 68");
+        Console.Write("Введите значение M: ");
+        string? x3 = Console.ReadLine();
+        int m1 = Convert.ToInt32(x3);
+        Console.Write("Введите значение N: ");
+        string? x4 = Console.ReadLine();
+        int n2 = Convert.ToInt32(x4);
+        System.Console.WriteLine(lesson68(m1, n2));
     }
 }
