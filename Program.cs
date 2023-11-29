@@ -1,54 +1,66 @@
-﻿int numb = new Random().Next(100, 999);
-int secondNumb(int numb)
+﻿
+public class lesson9
 {
-    int result = (numb % 100) / 10;
-    return (result);
-}
-Console.WriteLine(numb);
-Console.WriteLine($"цифра под индексом -2: {secondNumb(numb)}");
-
-int numb2 = new Random().Next(0, 100000);
-if (numb2 >= 100)
-{
-    int result = 0;
-    if (numb2 >= 1000)
-    {
-        int numb0 = numb2;
-        while(numb0 > 1000)
+    public static void lesson64(int n)
+    {  
+        if (n != 0)
         {
-            numb0 /= 10;
+            Console.Write(n);
+            if(n > 1)
+            {
+                Console.Write(", ");
+            }
+            lesson64(n - 1);
         }
-        result = numb0 % 10;
     }
-    else
+    public static void lesson66(int m, int n)
     {
-        result = numb2 % 10;
+        int x = 0;
+        if(m < n)
+        {
+            for(int i = m; i <= n; i++)
+            {
+                x += i;
+            }
+        }
+        else
+        {
+            for(int i = n; i <= m; i++)
+            {
+                x += i;
+            }
+        }
+        System.Console.WriteLine(x);
     }
-    System.Console.WriteLine(numb2);
-    Console.WriteLine($"цифра под индексом 2: {result}");
-}
-else
-{
-    Console.WriteLine("третей цифры нет");
-}
-
-// Console.WriteLine(numb2);
-// Console.WriteLine($"цифра под индексом 2: {thirdNumb(numb2)}");
-
-/// task 3
-
-int numb3 = new Random().Next(1, 7);
-
-string day(int numb3)
-{ 
-    if (numb3 == 6 || numb3 == 7)
+    public static int lesson68(int m, int n)
     {
-        return ("да");
+        if(m == 0) return n + 1;
+        else if(n == 0) return lesson68(m - 1, 1);
+        else return lesson68(m - 1, lesson68(m, n - 1));
     }
-    else
-    {   
-        return("нет");
+
+    public static void Main(string[] args)
+    {
+        System.Console.WriteLine("Задание 64");
+        Console.Write("Введите значение N: ");
+        string? x = Console.ReadLine();
+        int n = Convert.ToInt32(x);
+        lesson64(n);
+        System.Console.WriteLine("\nЗадача 66");
+        Console.Write("Введите значение M: ");
+        string? x1 = Console.ReadLine();
+        int m = Convert.ToInt32(x1);
+        Console.Write("Введите значение N: ");
+        string? x2 = Console.ReadLine();
+        int n1 = Convert.ToInt32(x2);
+        lesson66(m, n1);
+        System.Console.WriteLine("Задача 68");
+        Console.Write("Введите значение M: ");
+        string? x3 = Console.ReadLine();
+        int m1 = Convert.ToInt32(x3);
+        Console.Write("Введите значение N: ");
+        string? x4 = Console.ReadLine();
+        int n2 = Convert.ToInt32(x4);
+        System.Console.WriteLine(lesson68(m1, n2));
     }
 }
-Console.WriteLine(numb3);
-Console.WriteLine($"выходной день ? {day(numb3)}");
